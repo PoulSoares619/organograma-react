@@ -2,6 +2,7 @@ import './Formulario.css'
 import CampoTexto from '../campoTexto'
 import ListaSuspensa from '../ListaSuspensa'
 import Botao from '../Botão'
+import { useState } from 'react'
 
 
 const Formulario = () => {
@@ -16,19 +17,53 @@ const Formulario = () => {
         'Inovação e Gestão'
     ]
 
+    const [nome, setNome] = useState('')
+    const [cargo, setCargo] = useState('')
+    const [imagem, setImagem] = useState('')
+    const [time, setTime] = useState('')
+
     const aoSalvar = (evento) => {
         evento.preventDefault()
-        console.log('Nois que manda no form')
+        console.log('Nois que manda no form =>', nome, cargo, imagem, time)
     }
 
     return(
         <section className='formulario'>
             <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
-                <CampoTexto obrigatorio={true} label="Nome" placeholder="Digite seu nome"/>
-                <CampoTexto obrigatorio={true}  label="Cargo" placeholder="Digite seu cargo"/>
-                <CampoTexto label="Imagem" placeholder="Digite o endereço da Imagem"/>
-                <ListaSuspensa obrigatorio={true} label="Time" item={times} />
+
+                <CampoTexto
+                    obrigatorio={true}
+                    label="Nome" 
+                    placeholder="Digite seu nome"
+                    valor={nome}
+                    aoAlterado={valor => setNome(valor)}
+                    />
+
+                <CampoTexto
+                obrigatorio={true}  
+                label="Cargo" 
+                placeholder="Digite seu cargo"
+                valor={cargo}
+                aoAlterado={valor => setCargo(valor)}
+                />
+
+                <CampoTexto 
+                label="Imagem" 
+                placeholder="Digite o endereço da Imagem"
+                valor={imagem}
+                aoAlterado={valor => setImagem(valor)}
+
+                />
+
+                <ListaSuspensa 
+                obrigatorio={true} 
+                label="Time" 
+                item={times}
+                valor={time}
+                aoAlterado={valor => setTime(valor)}
+                />
+
                 <Botao>
                     Criar Card
                 </Botao>
