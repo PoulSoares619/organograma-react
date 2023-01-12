@@ -5,7 +5,7 @@ import Botao from '../Botão'
 import { useState } from 'react'
 
 
-const Formulario = () => {
+const Formulario = (props) => {
 
     const times = [
         'Programção',
