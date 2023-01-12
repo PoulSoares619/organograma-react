@@ -24,6 +24,13 @@ const Formulario = () => {
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
+        props.aoColaboradorCadastrado({
+            nome,
+            cargo,
+            imagem,
+            time
+
+        })
         console.log('Nois que manda no form =>', nome, cargo, imagem, time)
     }
 
